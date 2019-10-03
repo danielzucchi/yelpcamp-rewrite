@@ -1,7 +1,7 @@
-const mocks = require("./campgroundTestMocks")
+const mocks = require("../tests/hotelTestMocks")
 
-const mockModelCreate = jest.fn(() => Promise.resolve(mocks.testCampground))
-jest.setMock("../models/campgroundSchema", {
+const mockModelCreate = jest.fn(() => Promise.resolve(mocks.testHotel))
+jest.setMock("../models/hotelSchema", {
   create: mockModelCreate
 })
 
@@ -10,18 +10,18 @@ const mockModelCreateRejectWith = (name, message) => {
   error.name = name
   error.message = message
 
-  jest.setMock("../models/campgroundSchema", {
+  jest.setMock("../models/hotelSchema", {
     create: jest.fn(() => Promise.reject(error))
   })
 }
 
-describe("Creates a campground with parameters", () => {
-  it("Campground.model is called with passed campground details", async () => {
-    const campgroundService = require("../api-services/campgroundPostService")
+describe("Creates a hotel with parameters", () => {
+  it("Hotel.model is called with passed hotel details", async () => {
+    const hotelService = require("./hotelPostService")
 
-    await campgroundService.createCampground(mocks.testCampground)
+    await hotelService.createHotel(mocks.testHotel)
 
-    expect(mockModelCreate).toHaveBeenCalledWith(mocks.testCampground)
+    expect(mockModelCreate).toHaveBeenCalledWith(mocks.testHotel)
   })
 })
 
@@ -33,10 +33,10 @@ describe("Error handling cases", () => {
   it("Given rquest is made with a missing or invalid field, then service returns a Validation Error message", async () => {
     mockModelCreateRejectWith("ValidationError", "Required field not fulfilled")
 
-    const campgroundService = require("../api-services/campgroundPostService")
+    const hotelService = require("./hotelPostService")
 
     try {
-      await campgroundService.createCampground()
+      await hotelService.createHotel()
     } catch (err) {
       expect(err.message).toBe("Required field not fulfilled")
     }
@@ -46,10 +46,10 @@ describe("Error handling cases", () => {
     expect.assertions(1)
     mockModelCreateRejectWith("Generic Error")
 
-    const campgroundService = require("../api-services/campgroundPostService")
+    const hotelService = require("./hotelPostService")
 
     try {
-      await campgroundService.createCampground()
+      await hotelService.createHotel()
     } catch (err) {
       expect(err.message).toBe("Generic Error")
     }

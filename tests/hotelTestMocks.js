@@ -1,5 +1,5 @@
 const mocks = {
-  testCampground: {
+  testHotel: {
     name: "Test Campsite",
     price: "£40",
     image: "http://sample.jpg",
@@ -10,7 +10,7 @@ const mocks = {
     deleted: false
   },
 
-  responseCampground: {
+  responseHotel: {
     _id: "nfjdkshgkjre",
     name: "Test Campsite",
     price: "£40",
@@ -23,7 +23,7 @@ const mocks = {
     __v: 0
   },
 
-  testCampgroundMissingName: {
+  testHotelMissingName: {
     price: "£40",
     image: "http://sample.jpg",
     description: "Lorem ipsum",
@@ -33,7 +33,7 @@ const mocks = {
     deleted: false
   },
 
-  testCampgroundMissingPrice: {
+  testHotelMissingPrice: {
     name: "Test Campsite",
     image: "http://sample.jpg",
     description: "Lorem ipsum",
@@ -43,7 +43,7 @@ const mocks = {
     deleted: false
   },
 
-  testCampgroundMissingDescription: {
+  testHotelMissingDescription: {
     name: "Test Campsite",
     price: "£40",
     image: "http://sample.jpg",
@@ -53,7 +53,7 @@ const mocks = {
     deleted: false
   },
 
-  testCampgroundMissingImage: {
+  testHotelMissingImage: {
     name: "Test Campsite",
     price: "£40",
     description: "Lorem ipsum",
@@ -63,7 +63,7 @@ const mocks = {
     deleted: false
   },
 
-  testCampgroundMissingLocation: {
+  testHotelMissingLocation: {
     name: "Test Campsite",
     price: "£40",
     image: "http://sample.jpg",
@@ -73,7 +73,7 @@ const mocks = {
     deleted: false
   },
 
-  testCampgroundMissingLatitude: {
+  testHotelMissingLatitude: {
     name: "Test Campsite",
     price: "£40",
     image: "http://sample.jpg",
@@ -83,7 +83,7 @@ const mocks = {
     deleted: false
   },
 
-  testCampgroundMissingLongitude: {
+  testHotelMissingLongitude: {
     name: "Test Campsite",
     price: "£40",
     image: "http://sample.jpg",

@@ -1,143 +1,143 @@
-const campgroundPostService = require("../api-services/campgroundPostService")
+const hotelPostService = require("../api-services/hotelPostService")
 const request = require("supertest")
 const express = require("express")
 const server = express()
 const bodyParser = require("body-parser")
-const campgroundRoutes = require("../routes/campgroundPostRoute")
+const hotelRoutes = require("../routes/hotelPostRoute")
 
-const mocks = require("./campgroundTestMocks")
+const mocks = require("./hotelTestMocks")
 
 server.use(bodyParser.json())
-server.use(campgroundRoutes)
+server.use(hotelRoutes)
 
-jest.mock("../api-services/campgroundPostService")
+jest.mock("../api-services/hotelPostService")
 
-describe("Campground routes controller", () => {
-  describe("Create campground feature", () => {
-    it("Given the user requests to add a new campground, then create service gets called with campground details", () => {
-      campgroundPostService.createCampground = jest.fn()
+describe("Hotel routes controller", () => {
+  describe("Create hotel feature", () => {
+    it("Given the user requests to add a new hotel, then create service gets called with hotel details", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
-        .send(mocks.testCampground)
+        .post("/hotels")
+        .send(mocks.testHotel)
         .then(() => {
-          expect(campgroundPostService.createCampground).toHaveBeenCalledWith(
-            mocks.testCampground
+          expect(hotelPostService.createHotel).toHaveBeenCalledWith(
+            mocks.testHotel
           )
         })
     })
 
-    it("Given the user requests to add a campground, then the controller returns the created campground", () => {
-      campgroundPostService.createCampground = jest.fn(() =>
-        Promise.resolve(mocks.responseCampground)
+    it("Given the user requests to add a hotel, then the controller returns the created hotel", () => {
+      hotelPostService.createHotel = jest.fn(() =>
+        Promise.resolve(mocks.responseHotel)
       )
 
       return request(server)
-        .post("/campgrounds")
-        .send(mocks.testCampground)
+        .post("/hotels")
+        .send(mocks.testHotel)
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
         .then(response => {
           expect(response.statusCode).toBe(201)
-          expect(response.body).toMatchObject(mocks.testCampground)
+          expect(response.body).toMatchObject(mocks.testHotel)
           expect(response.body._id).toBe("nfjdkshgkjre")
           expect(response.body.__v).toBe(0)
         })
     })
   })
   describe("Validation errors handling", () => {
-    it("Given the user requests to add a campground missing a name field, then the controller returns an error", () => {
-      campgroundPostService.createCampground = jest.fn()
+    it("Given the user requests to add a hotel missing a name field, then the controller returns an error", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampgroundMissingName)
+        .send(mocks.testHotelMissingName)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.body[0]).toBe("name is required")
         })
     })
 
-    it("Given the user requests to add a campground missing a price field, then the controller returns an error", () => {
-      campgroundPostService.createCampground = jest.fn()
+    it("Given the user requests to add a hotel missing a price field, then the controller returns an error", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampgroundMissingPrice)
+        .send(mocks.testHotelMissingPrice)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.body[0]).toBe("price is required")
         })
     })
 
-    it("Given the user requests to add a campground missing a description field, then the controller returns an error", () => {
-      campgroundPostService.createCampground = jest.fn()
+    it("Given the user requests to add a hotel missing a description field, then the controller returns an error", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampgroundMissingDescription)
+        .send(mocks.testHotelMissingDescription)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.body[0]).toBe("description is required")
         })
     })
 
-    it("Given the user requests to add a campground missing an image field, then the controller returns an error", () => {
-      campgroundPostService.createCampground = jest.fn()
+    it("Given the user requests to add a hotel missing an image field, then the controller returns an error", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampgroundMissingImage)
+        .send(mocks.testHotelMissingImage)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.body[0]).toBe("image is required")
         })
     })
 
-    it("Given the user requests to add a campground missing a location field, then the controller returns an error", () => {
-      campgroundPostService.createCampground = jest.fn()
+    it("Given the user requests to add a hotel missing a location field, then the controller returns an error", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampgroundMissingLocation)
+        .send(mocks.testHotelMissingLocation)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.body[0]).toBe("location is required")
         })
     })
 
-    it("Given the user requests to add a campground missing a latitude field, then the controller returns an error", () => {
-      campgroundPostService.createCampground = jest.fn()
+    it("Given the user requests to add a hotel missing a latitude field, then the controller returns an error", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampgroundMissingLatitude)
+        .send(mocks.testHotelMissingLatitude)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.body[0]).toBe("latitude is required")
         })
     })
 
-    it("Given the user requests to add a campground missing a longitude field, then the controller returns an error", () => {
-      campgroundPostService.createCampground = jest.fn()
+    it("Given the user requests to add a hotel missing a longitude field, then the controller returns an error", () => {
+      hotelPostService.createHotel = jest.fn()
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampgroundMissingLongitude)
+        .send(mocks.testHotelMissingLongitude)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.body[0]).toBe("longitude is required")
@@ -148,15 +148,13 @@ describe("Campground routes controller", () => {
       const error = new Error()
       error.name = "ValidationError"
 
-      campgroundPostService.createCampground = jest.fn(() =>
-        Promise.reject(error)
-      )
+      hotelPostService.createHotel = jest.fn(() => Promise.reject(error))
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampground)
+        .send(mocks.testHotel)
         .then(response => {
           expect(response.statusCode).toBe(412)
           expect(response.text).toBe("Missing or invalid field.")
@@ -169,15 +167,13 @@ describe("Campground routes controller", () => {
       const error = new Error()
       error.name = "Generic Error"
 
-      campgroundPostService.createCampground = jest.fn(() =>
-        Promise.reject(error)
-      )
+      hotelPostService.createHotel = jest.fn(() => Promise.reject(error))
 
       return request(server)
-        .post("/campgrounds")
+        .post("/hotels")
         .set("Accept", "application/json")
         .set("Content-Type", "application/json")
-        .send(mocks.testCampground)
+        .send(mocks.testHotel)
         .then(response => {
           expect(response.statusCode).toBe(500)
           expect(response.text).toBe("Internal server error.")

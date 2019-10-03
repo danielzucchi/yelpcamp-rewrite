@@ -4,7 +4,7 @@ import "./App.css"
 
 class App extends Component {
   state = {
-    campgrounds: {}
+    hotels: {}
   }
 
   componentDidMount() {
@@ -12,17 +12,18 @@ class App extends Component {
       .get("/home")
       .then(res => {
         console.log(res)
-        this.setState({ campgrounds: res })
+        this.setState({ hotels: res })
       })
       .catch(err => console.log(err))
   }
 
   render() {
-    const { campgrounds } = this.state
+    const { hotels } = this.state
     return (
       <div className="App">
-        <h1>YelpCamp</h1>
-        <p>{campgrounds.data}</p>
+        <h1>HotelReviews</h1>
+        <p>Hello</p>
+        <p>{hotels.data}</p>
       </div>
     )
   }

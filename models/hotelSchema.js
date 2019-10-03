@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const campgroundSchema = new Schema({
+const hotelSchema = new Schema({
   name: { type: String, required: true },
   price: { type: String, required: true },
   image: { type: String, required: true },
@@ -12,6 +12,6 @@ const campgroundSchema = new Schema({
   deleted: { type: Boolean, default: false }
 })
 
-const Campground = mongoose.model("Campground", campgroundSchema)
+const Hotel = mongoose.model("Hotel", hotelSchema)
 
-module.exports = Campground
+module.exports = Hotel

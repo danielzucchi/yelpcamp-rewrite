@@ -2,7 +2,7 @@ const Validator = require("jsonschema").Validator
 const v = new Validator()
 
 const schema = {
-  id: "/Campground",
+  id: "/Hotel",
   type: "object",
   properties: {
     name: { type: String, required: true },

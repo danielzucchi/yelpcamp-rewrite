@@ -1,19 +1,19 @@
 const express = require("express")
 const router = express.Router()
 const httpStatus = require("http-status-codes")
-const campgroundPostService = require("../api-services/campgroundPostService")
+const hotelPostService = require("../api-services/hotelPostService")
 const validationService = require("../services/validationService")
 
-router.post("/campgrounds", (req, res) => {
+router.post("/hotels", (req, res) => {
   const validationResult = validationService(req.body)
   if (validationResult.length > 0) {
     return res.status(httpStatus.PRECONDITION_FAILED).send(validationResult)
   }
 
-  campgroundPostService
-    .createCampground(req.body)
-    .then(createdCampground => {
-      res.status(httpStatus.CREATED).send(createdCampground)
+  hotelPostService
+    .createHotel(req.body)
+    .then(createdHotel => {
+      res.status(httpStatus.CREATED).send(createdHotel)
     })
     .catch(err => {
       if (err.name == "ValidationError") {
