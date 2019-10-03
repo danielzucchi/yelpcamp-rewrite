@@ -1,11 +1,9 @@
-const express = require("express")
-const router = express.Router()
 const httpStatus = require("http-status-codes")
 const hotelPostService = require("../api-services/hotelPostService")
-const validationService = require("../services/validationService")
+const validate = require("../services/validationService")
 
-router.post("/hotels", (req, res) => {
-  const validationResult = validationService(req.body)
+exports.postHotel = (req, res) => {
+  const validationResult = validate(req.body)
   if (validationResult.length > 0) {
     return res.status(httpStatus.PRECONDITION_FAILED).send(validationResult)
   }
@@ -24,6 +22,4 @@ router.post("/hotels", (req, res) => {
         res.status(500).send("Internal server error.")
       }
     })
-})
-
-module.exports = router
+}

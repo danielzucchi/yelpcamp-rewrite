@@ -1,4 +1,4 @@
-const Hotel = require("./hotelSchema")
+const Hotel = require("../models/hotelSchema")
 
 describe("Hotel model", () => {
   it("Has the name property as a string", () => {
@@ -37,8 +37,7 @@ describe("Hotel model", () => {
   })
 
   it("Description property is required", () => {
-    const description_required =
-      Hotel.schema.paths.description.options.required
+    const description_required = Hotel.schema.paths.description.options.required
     expect(description_required).toBe(true)
   })
 
@@ -68,8 +67,7 @@ describe("Hotel model", () => {
   })
 
   it("Longitude property is required", () => {
-    const longitude_required =
-      Hotel.schema.paths.longitude.options.required
+    const longitude_required = Hotel.schema.paths.longitude.options.required
     expect(longitude_required).toBe(true)
   })
 })

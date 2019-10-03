@@ -3,7 +3,7 @@ const request = require("supertest")
 const express = require("express")
 const server = express()
 const bodyParser = require("body-parser")
-const hotelRoutes = require("../routes/hotelPostRoute")
+const hotelRoutes = require("../routes/hotelRoutes")
 
 const mocks = require("./hotelTestMocks")
 
