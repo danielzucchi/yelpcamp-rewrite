@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 import "./App.css"
+import NavBar from "./components/NavBar/NavBar"
 
 class App extends Component {
   state = {
@@ -20,10 +21,13 @@ class App extends Component {
   render() {
     const { hotels } = this.state
     return (
-      <div className="App">
-        <h1>HotelReviews</h1>
-        <p>Hello</p>
-        <p>{hotels.data}</p>
+      <div>
+        <NavBar />
+        <div className="App">
+          <h1>HotelReviews</h1>
+          <p>Hello</p>
+          <p>{hotels.data}</p>
+        </div>
       </div>
     )
   }
