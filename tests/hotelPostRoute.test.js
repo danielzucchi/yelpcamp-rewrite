@@ -55,7 +55,7 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotelMissingName)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.body[0]).toBe("name is required")
         })
     })
@@ -69,7 +69,7 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotelMissingPrice)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.body[0]).toBe("price is required")
         })
     })
@@ -83,7 +83,7 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotelMissingDescription)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.body[0]).toBe("description is required")
         })
     })
@@ -97,7 +97,7 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotelMissingImage)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.body[0]).toBe("image is required")
         })
     })
@@ -111,7 +111,7 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotelMissingLocation)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.body[0]).toBe("location is required")
         })
     })
@@ -125,7 +125,7 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotelMissingLatitude)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.body[0]).toBe("latitude is required")
         })
     })
@@ -139,12 +139,12 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotelMissingLongitude)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.body[0]).toBe("longitude is required")
         })
     })
 
-    it("When the service throws a ValidationError, then the controller returns a 412 status with an error message", () => {
+    it("When the service throws a ValidationError, then the controller returns a 422 status with an error message", () => {
       const error = new Error()
       error.name = "ValidationError"
 
@@ -156,7 +156,7 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .send(mocks.testHotel)
         .then(response => {
-          expect(response.statusCode).toBe(412)
+          expect(response.statusCode).toBe(422)
           expect(response.text).toBe("Missing or invalid field.")
         })
     })
