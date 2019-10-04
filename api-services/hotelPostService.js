@@ -1,7 +1,7 @@
 const Hotel = require("../models/hotelSchema")
 
 const hotelPostService = {
-  createHotel: function createHotel(hotel) {
+  createHotel: function(hotel) {
     return Hotel.create(hotel)
       .then(newHotel => newHotel)
       .catch(err => {

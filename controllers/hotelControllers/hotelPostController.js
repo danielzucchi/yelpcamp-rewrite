@@ -1,8 +1,9 @@
 const httpStatus = require("http-status-codes")
-const hotelPostService = require("../api-services/hotelPostService")
-const validate = require("../services/validationService")
+const hotelPostService = require("../../api-services/hotelPostService")
+const validate = require("../../services/validationService")
 
 exports.postHotel = (req, res) => {
+  // Can I extract this function back to validationService?
   const validationResult = validate(req.body)
   if (validationResult.length > 0) {
     return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(validationResult)

@@ -17,9 +17,9 @@ const mockModelCreateRejectWith = (name, message) => {
 
 describe("Creates a hotel with parameters", () => {
   it("Hotel.model is called with passed hotel details", async () => {
-    const hotelService = require("../api-services/hotelPostService")
+    const hotelPostService = require("../api-services/hotelPostService")
 
-    await hotelService.createHotel(mocks.testHotel)
+    await hotelPostService.createHotel(mocks.testHotel)
 
     expect(mockModelCreate).toHaveBeenCalledWith(mocks.testHotel)
   })
@@ -33,10 +33,10 @@ describe("Error handling cases", () => {
   it("Given rquest is made with a missing or invalid field, then service returns a Validation Error message", async () => {
     mockModelCreateRejectWith("ValidationError", "Required field not fulfilled")
 
-    const hotelService = require("../api-services/hotelPostService")
+    const hotelPostService = require("../api-services/hotelPostService")
 
     try {
-      await hotelService.createHotel()
+      await hotelPostService.createHotel()
     } catch (err) {
       expect(err.message).toBe("Required field not fulfilled")
     }
@@ -46,10 +46,10 @@ describe("Error handling cases", () => {
     expect.assertions(1)
     mockModelCreateRejectWith("Generic Error")
 
-    const hotelService = require("../api-services/hotelPostService")
+    const hotelPostService = require("../api-services/hotelPostService")
 
     try {
-      await hotelService.createHotel()
+      await hotelPostService.createHotel()
     } catch (err) {
       expect(err.message).toBe("Generic Error")
     }
