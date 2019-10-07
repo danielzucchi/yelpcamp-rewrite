@@ -1,6 +1,6 @@
 const mocks = {
   testHotel: {
-    name: "Test Campsite",
+    name: "Test Hotel",
     price: "£40",
     image: "http://sample.jpg",
     description: "Lorem ipsum",
@@ -12,7 +12,7 @@ const mocks = {
 
   responseHotel: {
     _id: "nfjdkshgkjre",
-    name: "Test Campsite",
+    name: "Test Hotel",
     price: "£40",
     image: "http://sample.jpg",
     description: "Lorem ipsum",
