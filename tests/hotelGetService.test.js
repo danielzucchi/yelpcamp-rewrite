@@ -1,6 +1,5 @@
-const mockModelFindRejectWith = (name, message) => {
+const mockModelFindRejectWith = message => {
   const error = new Error()
-  error.name = name
   error.message = message
 
   jest.setMock("../models/hotelSchema", {
@@ -18,21 +17,19 @@ describe("Find all hotels service", () => {
 
     const hotelGetService = require("../api-services/hotelGetService")
 
-    await hotelGetService.findAllHotels()
+    await hotelGetService.findAll()
 
     expect(mockModelFindAll).toHaveBeenCalledWith({ deleted: false })
   })
 
-  // it("Given the findAll service is called, if no hotels are found in the database, then a 404 error is returned", async () => {
-  //   expect.assertions(1)
-  //   mockModelFindRejectWith("NOT_FOUND")
+  it("Given the findAll service is called, if no hotels are found in the database, then a 404 error is returned", async () => {
+    expect.assertions(1)
+    mockModelFindRejectWith("NOT_FOUND")
 
-  //   const hotelGetService = require("../api-services/hotelGetService")
+    const hotelGetService = require("../api-services/hotelGetService")
 
-  //   try {
-  //     await hotelGetService.findAllHotels()
-  //   } catch (err) {
-  //     expect(err.message).toBe("BOO")
-  //   }
-  // })
+    await expect(hotelGetService.findAll()).rejects.toThrowError(
+      new Error("GENERIC_ERROR")
+    )
+  })
 })

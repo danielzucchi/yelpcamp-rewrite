@@ -1,14 +1,14 @@
 const Hotel = require("../models/hotelSchema")
 
 const hotelGetService = {
-  findAllHotels: function() {
+  findAll: function() {
     return Hotel.find({ deleted: false })
       .then(foundHotels => {
-        console.log("Success")
-        foundHotels
+        console.log("Success.")
+        return foundHotels
       })
       .catch(error => {
-        console.log("Error")
+        console.log("Error.")
         throw new Error(error, "NOT_FOUND")
       })
   }
