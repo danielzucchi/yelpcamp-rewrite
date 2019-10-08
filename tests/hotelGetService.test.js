@@ -1,12 +1,4 @@
-const mockModelFindRejectWith = (code, message) => {
-  const error = new Error()
-  error.message = message
-
-  jest.setMock("../models/hotelSchema", {
-    find: jest.fn(() => Promise.reject(error))
-  })
-  return require("../api-services/hotelGetService")
-}
+const testHelperFunctions = require("./testHelperFunctions")
 
 describe("Find all hotels service", () => {
   beforeEach(() => {
@@ -29,7 +21,10 @@ describe("Find all hotels service", () => {
 
   it("Given the findAll service is called, if no hotels are found in the database, then an error is returned", async () => {
     expect.assertions(1)
-    mockModelFindRejectWith("GENERIC_ERROR", "Something went wrong")
+    testHelperFunctions.mockModelFindRejectWith(
+      "GENERIC_ERROR",
+      "Something went wrong"
+    )
 
     const hotelGetService = require("../api-services/hotelGetService")
 
