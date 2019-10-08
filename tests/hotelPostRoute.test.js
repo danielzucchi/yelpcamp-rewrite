@@ -39,7 +39,16 @@ describe("Hotel routes controller", () => {
         .set("Content-Type", "application/json")
         .then(response => {
           expect(response.statusCode).toBe(201)
-          expect(response.body).toMatchObject(mocks.testHotel)
+          expect(response.body).toMatchObject({
+            name: "Test Hotel",
+            price: "£40",
+            image: "http://sample.jpg",
+            description: "Lorem ipsum",
+            location: "Lake District",
+            latitude: 1234,
+            longitude: 4321,
+            deleted: false
+          })
           expect(response.body._id).toBe("nfjdkshgkjre")
           expect(response.body.__v).toBe(0)
         })

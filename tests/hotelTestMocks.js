@@ -91,7 +91,30 @@ const mocks = {
     location: "Lake District",
     latitude: 1234,
     deleted: false
-  }
+  },
+
+  responseAllHotels: [
+    {
+      name: "Test Hotel",
+      price: "£40",
+      image: "http://sample.jpg",
+      description: "Lorem ipsum",
+      location: "Lake District",
+      latitude: 1234,
+      longitude: 4321,
+      deleted: false
+    },
+    {
+      name: "Test Hotel2",
+      price: "£42",
+      image: "http://sample.jpg",
+      description: "Lorem ipsum",
+      location: "Lake District",
+      latitude: 1234,
+      longitude: 4321,
+      deleted: false
+    }
+  ]
 }
 
 module.exports = mocks
