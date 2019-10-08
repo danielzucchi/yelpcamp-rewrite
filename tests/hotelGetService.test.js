@@ -1,16 +1,21 @@
-const mockModelFindRejectWith = message => {
+const mockModelFindRejectWith = (code, message) => {
   const error = new Error()
   error.message = message
 
   jest.setMock("../models/hotelSchema", {
     find: jest.fn(() => Promise.reject(error))
   })
-  // return require("../api-services/hotelGetService")
+  return require("../api-services/hotelGetService")
 }
 
 describe("Find all hotels service", () => {
+  beforeEach(() => {
+    jest.resetModules()
+  })
+
   it("Given the findAll service is called, then Mongo find function is called with params", async () => {
     const mockModelFindAll = jest.fn(() => Promise.resolve())
+
     jest.setMock("../models/hotelSchema", {
       find: mockModelFindAll
     })
@@ -22,9 +27,9 @@ describe("Find all hotels service", () => {
     expect(mockModelFindAll).toHaveBeenCalledWith({ deleted: false })
   })
 
-  it("Given the findAll service is called, if no hotels are found in the database, then a 404 error is returned", async () => {
+  it("Given the findAll service is called, if no hotels are found in the database, then an error is returned", async () => {
     expect.assertions(1)
-    mockModelFindRejectWith("NOT_FOUND")
+    mockModelFindRejectWith("GENERIC_ERROR", "Something went wrong")
 
     const hotelGetService = require("../api-services/hotelGetService")
 
