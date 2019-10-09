@@ -6,7 +6,15 @@ const hotelTestHelper = require("./hotelTestHelper")
 // BEFORE RUNNING TESTS: initialize database daemon
 
 describe("Create a hotel end-to-end tests", () => {
+  let searchTestHotelID
   let listOfHotelsToDelete = []
+
+  beforeAll(async () => {
+    searchTestHotelID = await hotelTestHelper.insertTestHotelInDB(
+      hotelMocks.testHotel
+    )
+    listOfHotelsToDelete.push(searchTestHotelID)
+  })
 
   afterAll(async done => {
     await hotelTestHelper.deleteHotelsByID(listOfHotelsToDelete)
@@ -23,6 +31,17 @@ describe("Create a hotel end-to-end tests", () => {
         expect(response.statusCode).toBe(201)
         expect(response.body).toMatchObject(hotelMocks.testHotel)
         expect(response.body._id).toBeDefined()
+      })
+  })
+
+  it("Given the user searches for all hotels in database, then those are returned.", async () => {
+    return await request(server)
+      .get("/hotels")
+      .set("Accept", "application/json")
+      .set("Content-Type", "application/json")
+      .then(response => {
+        expect(response.statusCode).toBe(200)
+        expect(response.body.length).toEqual(listOfHotelsToDelete.length)
       })
   })
 })
