@@ -14,7 +14,7 @@ jest.mock("../api-services/hotelGetService")
 
 describe("Hotel get controller", () => {
   describe("Get all hotels feature", () => {
-    it("Given the user requests all hotels in db, then service gets called", () => {
+    it("Given the user requests to find all hotels, then service gets called and responds with found hotels", () => {
       hotelGetService.findAll = jest.fn(() =>
         Promise.resolve(hotelTestMocks.responseAllHotels)
       )
@@ -45,6 +45,18 @@ describe("Hotel get controller", () => {
               deleted: false
             }
           ])
+        })
+    })
+
+    it("Given the user requests hotels but the service returns an error, then controller returns the error", () => {
+      const error = new Error("GENERIC_ERROR")
+      hotelGetService.findAll = jest.fn(() => Promise.reject(error))
+
+      return request(server)
+        .get("/hotels")
+        .then(response => {
+          expect(response.statusCode).toBe(500)
+          expect(response.text).toBe("Something went wrong.")
         })
     })
   })
