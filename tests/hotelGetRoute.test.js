@@ -12,7 +12,7 @@ server.use(hotelRoutes)
 
 jest.mock("../api-services/hotelGetService")
 
-describe("Hotel get controller", () => {
+describe("Hotel getAll controller", () => {
   describe("Get all hotels feature", () => {
     it("Given the user requests to find all hotels, then service gets called and responds with found hotels", () => {
       hotelGetService.findAll = jest.fn(() =>
