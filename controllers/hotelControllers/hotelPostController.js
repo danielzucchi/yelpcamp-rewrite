@@ -15,6 +15,7 @@ exports.postHotel = (req, res) => {
       res.status(httpStatus.CREATED).send(createdHotel)
     })
     .catch(err => {
+      console.log(err)
       if (err.name == "ValidationError") {
         res
           .status(httpStatus.UNPROCESSABLE_ENTITY)

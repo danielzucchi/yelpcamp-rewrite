@@ -8,7 +8,7 @@ class App extends Component {
     hotels: []
   }
 
-  componentDidMount() {
+  fetchHotels = () => {
     axios
       .get("/hotels")
       .then(res => {
@@ -26,7 +26,7 @@ class App extends Component {
         <NavBar />
         <div className="App">
           <h1>HotelReviews</h1>
-          <p>Hello</p>
+          <button onClick={this.fetchHotels}>Fetch</button>
           <p>{hotels}</p>
         </div>
       </div>
