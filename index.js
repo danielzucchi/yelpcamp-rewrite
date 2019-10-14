@@ -9,7 +9,7 @@ server.use(bodyParser.json())
 // const db = require("./config/keys").mongoURI
 const dbURI = "mongodb://localhost/hotelreviews"
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }).catch(err => console.log(err))
 
 server.use(hotelRoutes)
 

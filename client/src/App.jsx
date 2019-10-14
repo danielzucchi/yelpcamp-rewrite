@@ -12,7 +12,7 @@ class App extends Component {
     axios
       .get("/hotels")
       .then(res => {
-        console.log(res)
+        console.log(res.data)
         this.setState({ hotels: res.data })
       })
       .catch(err => console.log(err))
