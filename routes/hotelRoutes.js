@@ -11,4 +11,6 @@ router.post("/hotels", hotelPostController.postHotel)
 
 router.get("/hotels", hotelGetController.getAllHotels)
 
+router.get("/hotels/:id", hotelGetController.getHotelById)
+
 module.exports = router

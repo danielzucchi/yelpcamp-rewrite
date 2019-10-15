@@ -3,9 +3,14 @@ const Hotel = require("../models/hotelSchema")
 const hotelGetService = {
   findAll: function() {
     return Hotel.find({ deleted: false })
-      .then(foundHotels => foundHotels)
+      .then(foundHotels => {
+        if (!foundHotels || foundHotels.deleted == true) {
+          console.log("No hotels found.")
+          return new Error("NOT_FOUND")
+        }
+        return foundHotels
+      })
       .catch(error => {
-        console.log("GENERIC_ERRROR")
         throw new Error("GENERIC_ERROR")
       })
   },
@@ -13,7 +18,8 @@ const hotelGetService = {
   findHotelById: function(id) {
     return Hotel.findById(id)
       .then(foundHotel => {
-        if (!foundHotel || foundHotel.deleted) {
+        if (!foundHotel || foundHotel.deleted == true) {
+          console.log("No hotels found.")
           return new Error("NOT_FOUND")
         }
         return foundHotel

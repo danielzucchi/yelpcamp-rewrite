@@ -8,7 +8,12 @@ exports.getAllHotels = (req, res) => {
       res.status(httpStatus.OK).send(foundHotels)
     })
     .catch(error => {
-      console.log(error)
       res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Something went wrong.")
     })
+}
+
+exports.getHotelById = (req, res) => {
+  hotelGetService.findHotelById().then(foundHotel => {
+    res.status(200).send(foundHotel)
+  })
 }

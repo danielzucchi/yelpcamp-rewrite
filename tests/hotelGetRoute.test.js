@@ -60,4 +60,30 @@ describe("Hotel getAll controller", () => {
         })
     })
   })
+
+  describe("Get hotel by id route", () => {
+    it("Given the user calls the route/controller with a hotel id, then that hotel is returned", () => {
+      hotelGetService.findHotelById = jest.fn(() =>
+        Promise.resolve(hotelTestMocks.responseHotel)
+      )
+
+      return request(server)
+        .get("/hotels/nfjdkshgkjre")
+        .then(response => {
+          expect(response.statusCode).toBe(200)
+          expect(response.body).toMatchObject({
+            _id: "nfjdkshgkjre",
+            name: "Test Hotel",
+            price: "£40",
+            image: "http://sample.jpg",
+            description: "Lorem ipsum",
+            location: "Lake District",
+            latitude: 1234,
+            longitude: 4321,
+            deleted: false,
+            __v: 0
+          })
+        })
+    })
+  })
 })
