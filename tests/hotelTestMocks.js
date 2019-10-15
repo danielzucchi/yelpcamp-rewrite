@@ -11,7 +11,7 @@ const mocks = {
   },
 
   responseHotel: {
-    _id: "nfjdkshgkjre",
+    _id: "5da44ad81d0c1e0a5acb6a22",
     name: "Test Hotel",
     price: "£40",
     image: "http://sample.jpg",

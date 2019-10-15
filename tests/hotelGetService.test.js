@@ -86,10 +86,12 @@ describe("Find hotels service", () => {
 
       const hotelGetService = require("../api-services/hotelGetService")
 
-      const foundHotel = await hotelGetService.findHotelById("nfjdkshgkjre")
+      const foundHotel = await hotelGetService.findHotelById(
+        "5da44ad81d0c1e0a5acb6a22"
+      )
 
       expect(foundHotel).toMatchObject({
-        _id: "nfjdkshgkjre",
+        _id: "5da44ad81d0c1e0a5acb6a22",
         name: "Test Hotel",
         price: "£40",
         image: "http://sample.jpg",
@@ -111,7 +113,9 @@ describe("Find hotels service", () => {
 
       const hotelGetService = require("../api-services/hotelGetService")
 
-      const foundHotel = await hotelGetService.findHotelById("nfjdkshgkjre")
+      const foundHotel = await hotelGetService.findHotelById(
+        "5da44ad81d0c1e0a5acb6a22"
+      )
 
       expect(foundHotel.message).toBe("NOT_FOUND")
     })

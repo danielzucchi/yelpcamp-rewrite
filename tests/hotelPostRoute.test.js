@@ -49,7 +49,7 @@ describe("Hotel routes controller", () => {
             longitude: 4321,
             deleted: false
           })
-          expect(response.body._id).toBe("nfjdkshgkjre")
+          expect(response.body._id).toBe("5da44ad81d0c1e0a5acb6a22")
           expect(response.body.__v).toBe(0)
         })
     })

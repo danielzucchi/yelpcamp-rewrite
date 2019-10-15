@@ -19,7 +19,13 @@ class App extends Component {
   }
 
   render() {
-    const hotels = this.state.hotels.map(h => <div>{h.name}</div>)
+    const hotels = this.state.hotels.map(hotel => (
+      <div key={hotel._id}>
+        <h2>{hotel.name}</h2>
+        <h4>{hotel.price}</h4>
+        <p>{hotel.description}</p>
+      </div>
+    ))
 
     return (
       <div>
@@ -27,7 +33,7 @@ class App extends Component {
         <div className="App">
           <h1>HotelReviews</h1>
           <button onClick={this.fetchHotels}>Fetch</button>
-          <p>{hotels}</p>
+          <div>{hotels}</div>
         </div>
       </div>
     )

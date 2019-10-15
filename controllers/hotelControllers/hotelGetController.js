@@ -5,7 +5,11 @@ exports.getAllHotels = (req, res) => {
   hotelGetService
     .findAll()
     .then(foundHotels => {
-      res.status(httpStatus.OK).send(foundHotels)
+      if (!foundHotels || foundHotels.deleted == true) {
+        res.status(404).send("No hotels found.")
+      } else {
+        res.status(httpStatus.OK).send(foundHotels)
+      }
     })
     .catch(error => {
       res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Something went wrong.")
@@ -13,7 +17,20 @@ exports.getAllHotels = (req, res) => {
 }
 
 exports.getHotelById = (req, res) => {
-  hotelGetService.findHotelById().then(foundHotel => {
-    res.status(200).send(foundHotel)
-  })
+  hotelGetService
+    .findHotelById(req.params.id)
+    .then(foundHotel => {
+      if (!foundHotel) {
+        res.status(httpStatus.NOT_FOUND).send("Hotel not found.")
+      } else {
+        res.status(200).send(foundHotel)
+      }
+    })
+    .catch(error => {
+      if (error.message == "INVALID_ID") {
+        res.status(400).send("Invalid ID.")
+      } else {
+        res.status(500).send("Something went wrong.")
+      }
+    })
 }
