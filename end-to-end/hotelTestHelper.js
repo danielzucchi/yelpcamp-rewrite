@@ -1,13 +1,13 @@
-const Hotel = require("../models/hotelSchema")
+const Hotel = require('../models/hotelSchema');
 
 const testHelper = {
   deleteHotelsByID: function(hotelList) {
-    Hotel.deleteMany({ _id: { $in: hotelList } }).exec()
+    Hotel.deleteMany({ _id: { $in: hotelList } }).exec();
   },
 
   insertTestHotelInDB: async hotel => {
-    const createdHotel = await Hotel.create(hotel)
-    return createdHotel._id
+    const createdHotel = await Hotel.create(hotel);
+    return createdHotel._id;
   }
 
   // getNonDeletedHotelsIdsFromDB: async () => {
@@ -15,6 +15,6 @@ const testHelper = {
   //   allHotels.forEach(function(hotel) {
   //     console.log(hotel._id)
   //   })
-}
+};
 
-module.exports = testHelper
+module.exports = testHelper;

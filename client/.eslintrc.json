@@ -21,8 +21,6 @@
     "jest": true
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx"] }],
-    "no-console": 1,
-    "semi": 0
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx"] }]
   }
 }
