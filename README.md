@@ -7,7 +7,7 @@ Node.js/Express, frontend in React.
 
 #### To run end-to-end tests:
 
-Sping up MongoDB database with `mongod` and run command `npm run endtoend`.
+Sping up MongoDB database with `brew services start mongodb-community` and run command `npm run endtoend`.
 
 ##### Short term fixes:
 

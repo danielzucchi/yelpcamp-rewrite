@@ -1,9 +1,9 @@
-const hotelGetService = require("../api-services/hotelGetService")
+const hotelGetService = require("../backend/api-services/hotelGetService")
 const request = require("supertest")
 const express = require("express")
 const server = express()
 const bodyParser = require("body-parser")
-const hotelRoutes = require("../routes/hotelRoutes")
+const hotelRoutes = require("../backend/routes/hotelRoutes")
 
 const hotelTestMocks = require("./hotelTestMocks")
 
@@ -21,7 +21,7 @@ describe("Hotel getAll controller", () => {
 
       return request(server)
         .get("/hotels")
-        .then(response => {
+        .then((response) => {
           expect(response.statusCode).toBe(200)
           expect(response.body).toMatchObject([
             {
@@ -32,7 +32,7 @@ describe("Hotel getAll controller", () => {
               location: "Lake District",
               latitude: 1234,
               longitude: 4321,
-              deleted: false
+              deleted: false,
             },
             {
               name: "Test Hotel2",
@@ -42,8 +42,8 @@ describe("Hotel getAll controller", () => {
               location: "Lake District",
               latitude: 1234,
               longitude: 4321,
-              deleted: false
-            }
+              deleted: false,
+            },
           ])
         })
     })
@@ -55,7 +55,7 @@ describe("Hotel getAll controller", () => {
 
         return request(server)
           .get("/hotels")
-          .then(response => {
+          .then((response) => {
             expect(response.statusCode).toBe(500)
             expect(response.text).toBe("Something went wrong.")
           })
@@ -66,7 +66,7 @@ describe("Hotel getAll controller", () => {
 
         return request(server)
           .get("/hotels")
-          .then(response => {
+          .then((response) => {
             expect(response.statusCode).toBe(404)
             expect(response.text).toBe("No hotels found.")
           })
@@ -82,7 +82,7 @@ describe("Hotel getAll controller", () => {
 
       return request(server)
         .get("/hotels/5da44ad81d0c1e0a5acb6a22")
-        .then(response => {
+        .then((response) => {
           expect(response.statusCode).toBe(200)
           expect(response.body).toMatchObject({
             _id: "5da44ad81d0c1e0a5acb6a22",
@@ -94,7 +94,7 @@ describe("Hotel getAll controller", () => {
             latitude: 1234,
             longitude: 4321,
             deleted: false,
-            __v: 0
+            __v: 0,
           })
           expect(response.body._id).toBe("5da44ad81d0c1e0a5acb6a22")
           expect(response.body.__v).toBe(0)
@@ -107,7 +107,7 @@ describe("Hotel getAll controller", () => {
 
         return request(server)
           .get("/hotels/5da44ad81d0c1e0a5acb6a23")
-          .then(response => {
+          .then((response) => {
             expect(response.statusCode).toBe(404)
             expect(response.text).toBe("Hotel not found.")
           })
@@ -119,7 +119,7 @@ describe("Hotel getAll controller", () => {
 
         return request(server)
           .get("/hotels/anything")
-          .then(response => {
+          .then((response) => {
             expect(response.statusCode).toBe(400)
             expect(response.text).toBe("Invalid ID.")
           })
@@ -131,7 +131,7 @@ describe("Hotel getAll controller", () => {
 
         return request(server)
           .get("/hotels/anything")
-          .then(response => {
+          .then((response) => {
             expect(response.statusCode).toBe(500)
             expect(response.text).toBe("Something went wrong.")
           })
