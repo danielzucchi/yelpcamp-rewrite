@@ -1,4 +1,4 @@
-const getAllCampgrounds = require('../modules/graphql/campground');
+import getAllCampgrounds from '../modules/graphql/campground';
 
 const Campgrounds = {};
 

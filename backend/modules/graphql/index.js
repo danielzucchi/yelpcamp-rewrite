@@ -6,14 +6,11 @@ const graphql = {};
 graphql.query = async (options) => {
   const { query } = options;
 
-  const response = await axios(Config.graphql.URL, {
-    method: 'POST',
+  const response = await axios.post(Config.graphql.URL, {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      query,
-    }),
+    query: query,
   });
 
   const data = await response;
