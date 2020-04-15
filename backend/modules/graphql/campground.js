@@ -14,8 +14,7 @@ const getAllCampgrounds = async () => {
         `,
   });
 
-  console.log(result);
-  return result.data;
+  return result.data.data.campground;
 };
 
 module.exports = getAllCampgrounds;
