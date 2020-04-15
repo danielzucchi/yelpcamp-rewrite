@@ -13,7 +13,6 @@ server.use(campgroundRoutes);
 // This is only for rendering check purposes, will be deleted:
 server.get('/home', (req, res) => res.send('This is the home page.'));
 
-console.log(process.env);
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => console.log(`Server started on ${PORT}.`));
