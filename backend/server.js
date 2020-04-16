@@ -4,7 +4,7 @@ dotenv.config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const server = express();
-const campgroundRoutes = require('./routes/campgrounds');
+const campgroundRoutes = require('./routes/campgroundRoutes');
 
 server.use(bodyParser.json());
 

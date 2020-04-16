@@ -9,6 +9,7 @@ const getAllCampgrounds = async () => {
           image
           name
           description
+          deleted
         }
       }
         `,

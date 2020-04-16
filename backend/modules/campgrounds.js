@@ -3,14 +3,14 @@ const statusCode = require('http-status-codes');
 
 const Campgrounds = {};
 
-Campgrounds.getAllCampgrounds = async (req, res) => {
-  const result = await getAllCampgrounds();
+Campgrounds.getCampgrounds = async (req, res) => {
+  await getAllCampgrounds().then(result => {
+    if (result.errors) {
+      res.status(statusCode.NOT_FOUND).send(result.errors);
+    }
 
-  if (result.errors) {
-    res.status(statusCode.NOT_FOUND).send(result.errors);
-  }
-
-  res.status(statusCode.ACCEPTED).send(result);
+    res.status(statusCode.ACCEPTED).send(result);
+  });
 };
 
 module.exports = Campgrounds;
