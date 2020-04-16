@@ -3,19 +3,22 @@ import axios from 'axios';
 
 const graphql = {};
 
-graphql.query = async (options) => {
+graphql.query = async options => {
   const { query } = options;
 
-  const response = await axios.post(Config.graphql.URL, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    query: query,
-  });
-
-  const data = await response;
-
-  return data;
+  return await axios
+    .post(Config.graphql.URL, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      query: query,
+    })
+    .then(response => {
+      return response.data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 module.exports = graphql;
