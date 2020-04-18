@@ -9,7 +9,7 @@ Campgrounds.getCampgrounds = async (req, res) => {
       res.status(statusCode.NOT_FOUND).send(result.errors);
     }
 
-    res.status(statusCode.ACCEPTED).send(result);
+    res.status(statusCode.ACCEPTED).json(result);
   });
 };
 
