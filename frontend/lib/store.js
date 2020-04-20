@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
-import rootReducer from './rootReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from './rootReducer';
 
 const bindMiddlewares = middlewares => {
   if (process.env.NODE_ENV !== 'production') {
@@ -10,7 +10,7 @@ const bindMiddlewares = middlewares => {
   return applyMiddleware(...middlewares);
 };
 
-const initStore = initialState =>
+const initStore = (initialState = {}) =>
   createStore(rootReducer, initialState, bindMiddlewares([logger]));
 
 export default initStore;

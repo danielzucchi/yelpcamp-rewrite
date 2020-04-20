@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { setPageContent } from '../lib/content/actions';
 import CampgroundsContainer from '../components/campgrounds/CampgroundsContainer';
-import axios from 'axios';
 
 const Page = () => {
   return <CampgroundsContainer />;

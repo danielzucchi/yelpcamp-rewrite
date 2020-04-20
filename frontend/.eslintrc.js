@@ -3,13 +3,13 @@ module.exports = {
     'airbnb',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'prettier/react'
+    'prettier/react',
   ],
   plugins: ['prettier', 'jest', 'import', 'only-warn', 'json'],
   settings: {
     'import/resolver': {
-      'babel-module': {}
-    }
+      'babel-module': {},
+    },
   },
   parser: 'babel-eslint',
   env: {
@@ -19,7 +19,7 @@ module.exports = {
     amd: true,
     node: true,
     jest: true,
-    'jest/globals': true
+    'jest/globals': true,
   },
   rules: {
     'jsx-a11y/href-no-hash': ['off'],
@@ -27,17 +27,17 @@ module.exports = {
       'error',
       {
         required: {
-          some: ['nesting', 'id']
-        }
-      }
+          some: ['nesting', 'id'],
+        },
+      },
     ],
     'jsx-a11y/label-has-for': [
       'error',
       {
         required: {
-          some: ['nesting', 'id']
-        }
-      }
+          some: ['nesting', 'id'],
+        },
+      },
     ],
     'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
     'max-len': [
@@ -51,14 +51,14 @@ module.exports = {
         ignoreUrls: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
-        ignoreRegExpLiterals: true
-      }
+        ignoreRegExpLiterals: true,
+      },
     ],
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/*.stories.js', '**/*.test.js']
-      }
-    ]
-  }
+        devDependencies: ['**/*.stories.js', '**/*.test.js'],
+      },
+    ],
+  },
 };

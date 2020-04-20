@@ -19,11 +19,18 @@
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-only-warn": "^1.0.2",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.16.0",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "prettier-eslint": "^9.0.1"
   },
   "proxy": "http://0.0.0.0:5000"
 }
