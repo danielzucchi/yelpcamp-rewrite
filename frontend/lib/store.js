@@ -5,13 +5,6 @@ import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 
-// const bindMiddlewares = middleware => {
-//   if (process.env.NODE_ENV !== 'production') {
-//     return composeWithDevTools(applyMiddleware(...middleware));
-//   }
-//   return applyMiddleware(...middleware);
-// };
-
 const logger = createLogger({
   predicate: () => {
     return process.browser;
@@ -25,14 +18,14 @@ const makeConfiguredStore = (reducer, initialState) =>
     composeWithDevTools(applyMiddleware(logger)),
   );
 
-export default function initStore(initialState) {
+export default function initStore() {
   const persistConfig = {
     key: 'nextjs',
     storage,
-    timeout: 1,
   };
+
   const persistedReducer = persistReducer(persistConfig, rootReducer);
-  const store = makeConfiguredStore(persistedReducer, initialState);
+  const store = makeConfiguredStore(persistedReducer, {});
 
   store.persistor = persistStore(store);
 

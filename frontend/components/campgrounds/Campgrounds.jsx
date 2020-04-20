@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Campgrounds = ({ campgrounds }) => {
   return (
@@ -13,6 +14,14 @@ const Campgrounds = ({ campgrounds }) => {
       )}
     </div>
   );
+};
+
+Campgrounds.propTypes = {
+  campgrounds: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+Campgrounds.defaultProps = {
+  campgrounds: null,
 };
 
 export default Campgrounds;
