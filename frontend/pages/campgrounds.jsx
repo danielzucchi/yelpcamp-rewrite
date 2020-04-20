@@ -13,7 +13,7 @@ Page.getInitialProps = async ({ store }) => {
     .get('http://localhost:5000/campgrounds')
     .then(res => res.data.campground)
     .then(campgrounds => store.dispatch(setPageContent(campgrounds)))
-    .catch(err => console.log(err));
+    .catch(err => err);
 
   return {};
 };

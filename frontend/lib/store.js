@@ -1,16 +1,34 @@
 import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { logger } from 'redux-logger';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 
-const bindMiddlewares = middlewares => {
-  if (process.env.NODE_ENV !== 'production') {
-    return composeWithDevTools(applyMiddleware(...middlewares));
-  }
-  return applyMiddleware(...middlewares);
-};
+// const bindMiddlewares = middleware => {
+//   if (process.env.NODE_ENV !== 'production') {
+//     return composeWithDevTools(applyMiddleware(...middleware));
+//   }
+//   return applyMiddleware(...middleware);
+// };
 
-const initStore = (initialState = {}) =>
-  createStore(rootReducer, initialState, bindMiddlewares([logger]));
+const makeConfiguredStore = (reducer, initialState) =>
+  createStore(
+    reducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(logger)),
+  );
 
-export default initStore;
+export default function initStore(initialState) {
+  const persistConfig = {
+    key: 'root',
+    storage,
+    timeout: 1,
+  };
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+  const store = makeConfiguredStore(persistedReducer, initialState);
+
+  store.persistor = persistStore(store);
+
+  return store;
+}
