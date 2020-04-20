@@ -4,7 +4,7 @@ export const initialState = {
   isLoading: true
 };
 
-const content = (state = initialState, action) => {
+const contentReducer = (state = initialState, action) => {
   const newState = { ...state };
 
   switch (action.type) {
@@ -19,4 +19,4 @@ const content = (state = initialState, action) => {
   }
 };
 
-export default content;
+export default contentReducer;

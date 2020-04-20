@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { setPageContent } from '../lib/content/actions';
 import CampgroundsContainer from '../components/campgrounds/CampgroundsContainer';
 import axios from 'axios';
-import store from '../lib/store';
 
-function Campgrounds() {
+const Page = () => {
   return <CampgroundsContainer />;
-}
+};
 
-export async function getStaticProps() {
+Page.getInitialProps = async ({ store }) => {
   await axios
     .get('http://localhost:5000/campgrounds')
     .then(res => res.data.campground)
     .then(campgrounds => store.dispatch(setPageContent(campgrounds)))
     .catch(err => console.log(err));
 
-  return { props: {} };
-}
+  return {};
+};
 
-export default Campgrounds;
+export default connect(state => state)(Page);
