@@ -1,7 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 
@@ -11,23 +9,18 @@ const logger = createLogger({
   },
 });
 
-const makeConfiguredStore = (reducer, initialState) =>
-  createStore(
-    reducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(logger)),
-  );
+const middleware = [];
 
-export default function initStore() {
-  const persistConfig = {
-    key: 'nextjs',
-    storage,
-  };
+const bindMiddlewares = middlewares => {
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(logger);
 
-  const persistedReducer = persistReducer(persistConfig, rootReducer);
-  const store = makeConfiguredStore(persistedReducer, {});
+    return composeWithDevTools(applyMiddleware(...middlewares));
+  }
+  return applyMiddleware(...middlewares);
+};
 
-  store.persistor = persistStore(store);
+const initStore = (initialState = {}) =>
+  createStore(rootReducer, initialState, bindMiddlewares(middleware));
 
-  return store;
-}
+export default initStore;
