@@ -2,19 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Campgrounds = ({ campgrounds, isLoading }) => {
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div>
       <h1>Campgrounds:</h1>
-      {campgrounds ? (
-        campgrounds.map(campground => (
-          <p key={campground.id}>{campground.name}</p>
-        ))
+      {isLoading ? (
+        <p>Loading...</p>
       ) : (
-        <div>No campgrounds found.</div>
+        <div>
+          {campgrounds ? (
+            campgrounds.map(campground => (
+              <p key={campground.id}>{campground.name}</p>
+            ))
+          ) : (
+            <div>No campgrounds found.</div>
+          )}
+        </div>
       )}
     </div>
   );
