@@ -1,15 +1,16 @@
 import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 
 const logger = createLogger({
-  predicate: () => {
-    return process.browser;
-  },
+  // predicate: () => {
+  //   return process.browser;
+  // },
 });
 
-const middleware = [];
+const middleware = [thunk];
 
 const bindMiddlewares = middlewares => {
   if (process.env.NODE_ENV !== 'production') {

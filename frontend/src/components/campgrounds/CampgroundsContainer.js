@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import Campgrounds from './Campgrounds';
 
 const mapStateToProps = ({ content }) => {
-  const { campgrounds } = content;
+  const { campgrounds, isLoading } = content;
 
   return {
     campgrounds,
+    isLoading,
   };
 };
 

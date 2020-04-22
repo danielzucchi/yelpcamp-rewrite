@@ -8,7 +8,12 @@ const contentReducer = (state = initialState, action) => {
   const newState = { ...state };
 
   switch (action.type) {
-    case actionTypes.SET_PAGE_CONTENT:
+    case actionTypes.GET_CAMPGROUNDS:
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.SET_CAMPGROUNDS:
       newState.isLoading = false;
       newState.campgrounds = action.content;
 

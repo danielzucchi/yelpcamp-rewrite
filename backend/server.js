@@ -4,9 +4,11 @@ dotenv.config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const server = express();
+const cors = require('cors');
 const campgroundRoutes = require('./routes/campgroundRoutes');
 
 server.use(bodyParser.json());
+server.use(cors());
 
 server.use(campgroundRoutes);
 

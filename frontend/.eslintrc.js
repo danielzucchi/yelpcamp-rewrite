@@ -39,7 +39,7 @@ module.exports = {
         },
       },
     ],
-    'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.jsx'] }],
     'max-len': [
       'warn',
       {
