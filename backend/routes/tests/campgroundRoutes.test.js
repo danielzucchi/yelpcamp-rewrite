@@ -14,7 +14,7 @@ jest.mock('../../modules/campgrounds');
 
 describe('Campgrounds get route', () => {
   describe('Given the endpoint is called', () => {
-    it.only('the module is called.', () => {
+    it('the module is called.', () => {
       campgroundsModule.getAllCampgrounds = jest.fn();
 
       request(app)

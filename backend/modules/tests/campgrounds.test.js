@@ -8,7 +8,7 @@ describe('Campground module tests', () => {
   });
 
   it('GraphQL gets called', async () => {
-    const mockGetAll = jest.fn(() => Promise.resolve());
+    const mockGetAll = jest.fn();
 
     jest.setMock('../graphql/campground', {
       getAllCampgrounds: mockGetAll,

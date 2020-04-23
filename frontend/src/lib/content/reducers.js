@@ -19,6 +19,13 @@ const contentReducer = (state = initialState, action) => {
 
       return newState;
 
+    case actionTypes.GET_CAMPGROUNDS_FAIL:
+      newState.isLoading = false;
+      newState.campgrounds = null;
+      newState.error = action.error.message;
+
+      return newState;
+
     default:
       return state;
   }

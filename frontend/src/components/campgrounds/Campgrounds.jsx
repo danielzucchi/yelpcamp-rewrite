@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Campgrounds = ({ campgrounds, isLoading }) => {
+const Campgrounds = ({ campgrounds, isLoading, error }) => {
   return (
     <div>
       <h1>Campgrounds:</h1>
@@ -16,6 +16,8 @@ const Campgrounds = ({ campgrounds, isLoading }) => {
           ) : (
             <div>No campgrounds found.</div>
           )}
+
+          {error && <h6>{error}</h6>}
         </div>
       )}
     </div>
@@ -25,10 +27,12 @@ const Campgrounds = ({ campgrounds, isLoading }) => {
 Campgrounds.propTypes = {
   campgrounds: PropTypes.arrayOf(PropTypes.shape({})),
   isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
 };
 
 Campgrounds.defaultProps = {
   campgrounds: null,
+  error: null,
 };
 
 export default Campgrounds;

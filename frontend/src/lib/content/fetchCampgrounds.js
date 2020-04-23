@@ -1,14 +1,15 @@
 import axios from 'axios';
-import { getCampgrounds, setCampgrounds } from './actions';
+import { publicRuntimeConfig } from '../config';
+import { getCampgrounds, setCampgrounds, getCampgroundsFail } from './actions';
 
-const fetchCampgrounds = () => {
+const fetchCampgrounds = key => {
   return async dispatch => {
-    dispatch(getCampgrounds());
+    dispatch(getCampgrounds(key));
     await axios
-      .get('http://localhost:5000/campgrounds')
+      .get(`${publicRuntimeConfig.REACT_APP_API_URL}/content/${key}`)
       .then(res => res.data.campground)
       .then(campgrounds => dispatch(setCampgrounds(campgrounds)))
-      .catch(err => err);
+      .catch(err => dispatch(getCampgroundsFail(err)));
   };
 };
 
