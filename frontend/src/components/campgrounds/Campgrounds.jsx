@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CampgroundTile from '../campground-tile/CampgroundTile';
+import Loading from '../ui/loading-spinner/Loading';
 
 const Campgrounds = ({ campgrounds, isLoading, error }) => {
   return (
     <div>
       <h1>Campgrounds:</h1>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <div>
           {campgrounds ? (
