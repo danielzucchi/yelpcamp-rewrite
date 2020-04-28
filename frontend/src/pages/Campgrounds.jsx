@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchCampgrounds from '../lib/content/fetchCampgrounds';
-import CampgroundsContainer from '../components/campgrounds/CampgroundsContainer';
+import CampgroundsListContainer from '../components/campgrounds-list/CampgroundsListContainer';
 
 const Campgrounds = ({ dispatch }) => {
   useEffect(() => {
     dispatch(fetchCampgrounds('campgrounds'));
-  }, []);
+  }, [dispatch]);
 
-  return <CampgroundsContainer />;
+  return <CampgroundsListContainer />;
 };
 
 Campgrounds.propTypes = {

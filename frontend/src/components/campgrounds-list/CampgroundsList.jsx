@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CampgroundTile from '../campground-tile/CampgroundTile';
 import Loading from '../ui/loading-spinner/Loading';
 
-const Campgrounds = ({ campgrounds, isLoading, error }) => {
+const CampgroundsList = ({ campgrounds, isLoading, error }) => {
   return (
     <div>
       <h1>Campgrounds:</h1>
@@ -26,15 +26,15 @@ const Campgrounds = ({ campgrounds, isLoading, error }) => {
   );
 };
 
-Campgrounds.propTypes = {
+CampgroundsList.propTypes = {
   campgrounds: PropTypes.arrayOf(PropTypes.shape({})),
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };
 
-Campgrounds.defaultProps = {
+CampgroundsList.defaultProps = {
   campgrounds: null,
   error: null,
 };
 
-export default Campgrounds;
+export default CampgroundsList;

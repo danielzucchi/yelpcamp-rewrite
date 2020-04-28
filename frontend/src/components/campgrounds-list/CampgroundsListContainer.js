@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Campgrounds from './Campgrounds';
+import CampgroundsList from './CampgroundsList';
 
 const mapStateToProps = ({ content }) => {
   const { campgrounds, isLoading, error } = content;
@@ -11,4 +11,4 @@ const mapStateToProps = ({ content }) => {
   };
 };
 
-export default connect(mapStateToProps)(Campgrounds);
+export default connect(mapStateToProps)(CampgroundsList);
