@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchCampgrounds from '../lib/content/fetchCampgrounds';
 import CampgroundsContainer from '../components/campgrounds/CampgroundsContainer';
 
-class Campgrounds extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+const Campgrounds = ({ dispatch }) => {
+  useEffect(() => {
     dispatch(fetchCampgrounds('campgrounds'));
-  }
+  }, []);
 
-  render() {
-    return <CampgroundsContainer />;
-  }
-}
+  return <CampgroundsContainer />;
+};
 
 Campgrounds.propTypes = {
   dispatch: PropTypes.func.isRequired,

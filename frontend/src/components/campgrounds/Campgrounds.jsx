@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CampgroundTile from '../campground-tile/CampgroundTile';
 
 const Campgrounds = ({ campgrounds, isLoading, error }) => {
   return (
@@ -11,7 +12,7 @@ const Campgrounds = ({ campgrounds, isLoading, error }) => {
         <div>
           {campgrounds ? (
             campgrounds.map(campground => (
-              <p key={campground.id}>{campground.name}</p>
+              <CampgroundTile key={campground.id} campground={campground} />
             ))
           ) : (
             <div>No campgrounds found.</div>
