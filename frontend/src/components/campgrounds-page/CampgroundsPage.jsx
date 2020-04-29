@@ -6,7 +6,7 @@ import Loading from '../ui/loading-spinner/Loading';
 const CampgroundsPage = ({ isLoading }) => {
   return (
     <div>
-      <h1>Campgrounds:</h1>
+      <h1>Campgrounds</h1>
       {isLoading ? <Loading /> : <CampgroundsListContainer />}
     </div>
   );
