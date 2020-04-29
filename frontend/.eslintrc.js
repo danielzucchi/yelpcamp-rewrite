@@ -39,7 +39,10 @@ module.exports = {
         },
       },
     ],
-    'react/jsx-filename-extension': ['warn', { extensions: ['.jsx'] }],
+    'react/jsx-filename-extension': [
+      'warn',
+      { extensions: ['.jsx', '.test.js'] },
+    ],
     'max-len': [
       'warn',
       {
@@ -57,7 +60,11 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/*.stories.js', '**/*.test.js'],
+        devDependencies: [
+          '**/*.stories.js',
+          '**/*.test.js',
+          '/src/setupTests.js',
+        ],
       },
     ],
   },
