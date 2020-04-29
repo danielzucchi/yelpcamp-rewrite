@@ -4,4 +4,4 @@ import Loading from '../Loading';
 
 const stories = storiesOf('UI|Loading Spinner');
 
-stories.add('Regular', () => <Loading />);
+stories.add('Simple', () => <Loading />);

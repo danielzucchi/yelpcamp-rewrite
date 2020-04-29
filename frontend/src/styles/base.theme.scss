@@ -1,0 +1,14 @@
+@import './variables';
+
+h1,
+h2,
+h3 {
+  color: $san-felix;
+  font-family: $font;
+}
+
+html,
+body {
+  background-color: $vista-white;
+  font-family: $font;
+}

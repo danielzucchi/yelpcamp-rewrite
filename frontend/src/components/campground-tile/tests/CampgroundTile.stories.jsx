@@ -5,4 +5,4 @@ import campgroundMock from './Campground.mock';
 
 const stories = storiesOf('Components|Camground Tile');
 
-stories.add('Regular', () => <CampgroundTile campground={campgroundMock} />);
+stories.add('Simple', () => <CampgroundTile campground={campgroundMock} />);
