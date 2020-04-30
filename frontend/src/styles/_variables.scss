@@ -1,5 +1,4 @@
-// Variables for global app styles here.
-// Remember to import this when components need to use it
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
 
 $san-felix: #096212;
 $oxford-blue: #00263e;
@@ -15,4 +14,5 @@ $white: #fff;
 $vista-white: #fcf7f4;
 $tulip-tree: #eab33a;
 
-$font: Helvetica, Arial, sans-serif;
+$font: 'Lato', Helvetica, Arial, sans-serif;
+$heading-font: 'Montserrat', Helvetica, Arial, sans-serif;

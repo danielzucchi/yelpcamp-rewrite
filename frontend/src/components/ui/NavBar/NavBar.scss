@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+.nav {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 5px 0;
+  background-color: $san-felix;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+
+  & li,
+  a,
+  button {
+    font-family: $heading-font;
+    font-weight: 400;
+    font-size: 16px;
+    color: $white;
+    text-decoration: none;
+  }
+
+  &__links {
+    list-style: none;
+
+    & li {
+      display: inline-block;
+      padding: 0 20px;
+    }
+
+    & li a {
+      transition: all 0.3s ease 0s;
+
+      &:hover {
+        color: $tulip-tree;
+      }
+    }
+  }
+}

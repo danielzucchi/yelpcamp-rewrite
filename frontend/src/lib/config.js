@@ -1,5 +1,8 @@
 module.exports = {
   publicRuntimeConfig: {
     REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+    REACT_APP_CONTENTFUL_API: process.env.REACT_APP_CONTENTFUL_API,
+    REACT_APP_CONTENTFUL_SPACES: process.env.REACT_APP_CONTENTFUL_SPACES,
+    REACT_APP_CONTENTFUL_TOKEN: process.env.REACT_APP_CONTENTFUL_TOKEN,
   },
 };

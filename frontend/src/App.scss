@@ -1,8 +1,14 @@
 @import './styles/variables';
 
 h1,
-h2,
-h3 {
+h2 {
+  color: $san-felix;
+  font-family: $heading-font;
+}
+
+h3,
+h4,
+p {
   color: $san-felix;
   font-family: $font;
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import fetchCampgrounds from '../lib/content/fetchCampgrounds';
+import fetchContent from '../lib/content/fetchContent';
 import CampgroundsPageContainer from '../components/campgrounds-page/CampgroundsPageContainer';
 
 const Campgrounds = ({ dispatch, content }) => {
@@ -9,7 +9,7 @@ const Campgrounds = ({ dispatch, content }) => {
 
   useEffect(() => {
     if (!campgrounds) {
-      dispatch(fetchCampgrounds('campgrounds'));
+      dispatch(fetchContent.fetchCampgrounds('campgrounds'));
     }
   }, [dispatch, campgrounds]);
 

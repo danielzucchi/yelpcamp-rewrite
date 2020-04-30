@@ -26,6 +26,17 @@ const contentReducer = (state = initialState, action) => {
 
       return newState;
 
+    case actionTypes.GET_CONTENT:
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.SET_CONTENT:
+      newState.isLoading = false;
+      newState.globalCopy = action.content;
+
+      return newState;
+
     default:
       return state;
   }
