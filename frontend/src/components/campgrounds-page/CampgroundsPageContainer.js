@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import CampgroundsPage from './CampgroundsPage';
 
 const mapStateToProps = ({ content }) => {
-  const { isLoading } = content;
+  const { isLoading, globalCopy } = content;
 
   return {
+    campgroundsTitle: globalCopy['campgrounds.campgrounds'],
     isLoading,
   };
 };

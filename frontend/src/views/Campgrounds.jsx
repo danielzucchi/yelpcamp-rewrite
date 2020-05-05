@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchContent from '../lib/content/fetchContent';
 import CampgroundsPageContainer from '../components/campgrounds-page/CampgroundsPageContainer';
+import Loading from '../components/ui/loading-spinner/Loading';
 
 const Campgrounds = ({ dispatch, content }) => {
-  const { campgrounds } = content;
+  const { campgrounds, isLoading } = content;
 
   useEffect(() => {
     if (!campgrounds) {
@@ -13,7 +14,7 @@ const Campgrounds = ({ dispatch, content }) => {
     }
   }, [dispatch, campgrounds]);
 
-  return <CampgroundsPageContainer />;
+  return isLoading ? <Loading /> : <CampgroundsPageContainer />;
 };
 
 Campgrounds.propTypes = {

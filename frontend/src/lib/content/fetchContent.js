@@ -15,7 +15,7 @@ fetchContent.fetchCampgrounds = key => {
     dispatch(getCampgrounds(key));
 
     await axios
-      .get(`${publicRuntimeConfig.REACT_APP_API_URL}/content/${key}`)
+      .get(`${publicRuntimeConfig.API_URL}/content/${key}`)
       .then(res => res.data.campground)
       .then(campgrounds => dispatch(setCampgrounds(campgrounds)))
       .catch(err => dispatch(getCampgroundsFail(err)));
@@ -28,7 +28,7 @@ fetchContent.fetchGlobalCopy = () => {
 
     await axios
       .get(
-        `${publicRuntimeConfig.REACT_APP_CONTENTFUL_API}/${publicRuntimeConfig.REACT_APP_CONTENTFUL_SPACES}/entries?content_type=microCopy&access_token=${publicRuntimeConfig.REACT_APP_CONTENTFUL_TOKEN}`,
+        `${publicRuntimeConfig.CONTENTFUL_API}/${publicRuntimeConfig.CONTENTFUL_SPACES}/entries?content_type=microCopy&access_token=${publicRuntimeConfig.CONTENTFUL_TOKEN}`,
       )
       .then(res => {
         const entries = {};
